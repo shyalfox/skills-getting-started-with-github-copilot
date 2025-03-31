@@ -46,5 +46,38 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const activitiesList = document.getElementById("activities-list");
+
+        // Fetch activities from the API
+        fetch("/activities")
+          .then((response) => response.json())
+          .then((activities) => {
+            activitiesList.innerHTML = ""; // Clear loading message
+            for (const [name, details] of Object.entries(activities)) {
+              const card = document.createElement("div");
+              card.className = "activity-card";
+
+              card.innerHTML = `
+                <h4>${name}</h4>
+                <p><strong>Description:</strong> ${details.description}</p>
+                <p><strong>Schedule:</strong> ${details.schedule}</p>
+                <p><strong>Max Participants:</strong> ${details.max_participants}</p>
+                <p><strong>Participants:</strong></p>
+                <ul class="participants-list">
+                  ${details.participants.map((participant) => `<li>${participant}</li>`).join("")}
+                </ul>
+              `;
+
+              activitiesList.appendChild(card);
+            }
+          })
+          .catch((error) => {
+            activitiesList.innerHTML = `<p class="error">Failed to load activities. Please try again later.</p>`;
+            console.error("Error fetching activities:", error);
+          });
+      });
+    </script>
   </body>
 </html>
