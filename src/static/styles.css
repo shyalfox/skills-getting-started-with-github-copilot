@@ -74,6 +74,31 @@ section h3 {
   margin-bottom: 8px;
 }
 
+.activity-card ul {
+  margin-top: 10px;
+  padding-left: 30px;
+  list-style-type: square; /* Changed list style */
+  color: #555;
+}
+
+.activity-card ul li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.participants-list {
+  margin-top: 10px;
+  padding-left: 40px; /* Adjusted indentation */
+  list-style-type: square; /* Ensured consistent list style */
+  color: #555;
+}
+
+.participants-list li {
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 1.4; /* Improved readability */
+}
+
 .form-group {
   margin-bottom: 15px;
 }
